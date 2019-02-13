@@ -6,6 +6,7 @@
         <div 
             class="radio-btn-filter"
             v-for="(prop, index) in userFilters"
+            v-if="prop != 'image'"
             :key="index">
             <input 
                 type="radio"
@@ -35,19 +36,19 @@
 
 <script>
 import User from "./User.vue";
-import { filterUsers } from './../mixins/filterUsers.js';
+import { filterUsers } from "./../mixins/filterUsers.js";
 
 export default {
-    mixins: [filterUsers],
-    data() {
-        return {
-            status: null,
-        }
-    },
-    components: {
-        User
-    }
-}
+  mixins: [filterUsers],
+  data() {
+    return {
+      status: null
+    };
+  },
+  components: {
+    User
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -70,10 +71,10 @@ a {
   color: #42b983;
 }
 .radio-btns {
-    padding-bottom: 1rem;
+  padding-bottom: 1rem;
 }
 .radio-btn-filter {
-    display: inline-block;
-    padding-right: 0.5rem;
+  display: inline-block;
+  padding-right: 0.5rem;
 }
 </style>

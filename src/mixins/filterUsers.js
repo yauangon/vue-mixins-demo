@@ -1,57 +1,127 @@
 export const filterUsers = {
-    data() {
-        return {
-            filter: '',
-            users: [
-                {name: 'glo abredit', age: 27, status: 0, created_at: '2017-09-11' },
-                {name: 'gia fella', age: 29, status: 1, created_at: '2017-09-01' },
-                {name: 'ohaneze david', age: 23, status: 0, created_at: '2017-09-09' },
-                {name: 'paul david', age: 21, status: 1, created_at: '2017-09-21' },
-                {name: 'john williams', age: 20, status: 0, created_at: '2017-03-13' },
-                {name: 'mary jokers', age: 28, status: 1, created_at: '2017-09-30' },
-                {name: 'chris aloha', age: 27, status: 0, created_at: '2017-09-19' },
-                {name: 'johnson silva', age: 29, status: 0, created_at: '2017-09-17' },
-                {name: 'sens carlos', age: 26, status: 0, created_at: '2017-09-04' },
-                {name: 'sophia nkom', age: 25, status: 0, created_at: '2017-09-05' },
-                {name: 'jo westley', age: 22, status: 1, created_at: '2017-09-16' },
-                {name: 'sam john', age: 24, status: 0, created_at: '2017-04-01' },
-                {name: 'dia dia', age: 27, status: 1, created_at: '2017-05-08' }
-            ]
-        }
-    },
-    methods: {
-        get_active_or_inactive(){
-            if(this.status != null) {
-                var status = this.status;
-                return this.users.filter(function(users){
-                    return users.status == status;
-                });
-            } else {
-                return this.users;
-            }
+  data() {
+    return {
+      filter: "",
+      users: [
+        {
+          name: "Nurdan Çağıran",
+          age: 23,
+          status: 0,
+          created: "2018-09-22",
+          image: "https://randomuser.me/api/portraits/thumb/women/31.jpg"
         },
-        filter_by(users, filter) {
-            return users.sort(function(a, b){
-                // return a[filter] > b[filter];
-                if (a[filter] > b[filter]) return 1;
-                if (a[filter] < b[filter]) return -1;
-                return 0;
-            })
-        }
-    },
-    computed: {
-        filteredUsers(){
-            if(!this.filter) {
-                this.filter = "created_at";
-            }
-            return this.filter_by(this.get_active_or_inactive(), this.filter);
+        {
+          name: "Julien Morin",
+          age: 27,
+          status: 1,
+          created: "2018-10-18",
+          image: "https://randomuser.me/api/portraits/thumb/men/67.jpg"
         },
-        userFilters() {
-            let arr = [];
-            for(let prop in this.users[0]) {
-                arr.push(prop);
-            }
-            return arr;
+        {
+          name: "Herma Rabe",
+          age: 33,
+          status: 1,
+          created: "2018-04-20",
+          image: "https://randomuser.me/api/portraits/thumb/women/82.jpg"
+        },
+        {
+          name: "Eva Flores",
+          age: 28,
+          status: 0,
+          created: "2018-11-21",
+          image: "https://randomuser.me/api/portraits/thumb/women/4.jpg"
+        },
+        {
+          name: "Benedikte Urdal",
+          age: 32,
+          status: 0,
+          created: "2018-09-24",
+          image: "https://randomuser.me/api/portraits/thumb/women/63.jpg"
+        },
+        {
+          name: "Toby Taylor",
+          age: 25,
+          status: 1,
+          created: "2018-08-27",
+          image: "https://randomuser.me/api/portraits/thumb/men/58.jpg"
+        },
+        {
+          name: "حامد کوتی",
+          age: 27,
+          status: 1,
+          created: "2018-04-17",
+          image: "https://randomuser.me/api/portraits/thumb/men/91.jpg"
+        },
+        {
+          name: "Tammy Mendoza",
+          age: 31,
+          status: 0,
+          created: "2018-05-13",
+          image: "https://randomuser.me/api/portraits/thumb/women/72.jpg"
+        },
+        {
+          name: "Kathy Gordon",
+          age: 31,
+          status: 1,
+          created: "2018-04-23",
+          image: "https://randomuser.me/api/portraits/thumb/women/44.jpg"
+        },
+        {
+          name: "Tristan Nielsen",
+          age: 30,
+          status: 1,
+          created: "2018-01-18",
+          image: "https://randomuser.me/api/portraits/thumb/men/2.jpg"
+        },
+        {
+          name: "Lilja Wallo",
+          age: 30,
+          status: 1,
+          created: "2018-01-21",
+          image: "https://randomuser.me/api/portraits/thumb/women/79.jpg"
+        },
+        {
+          name: "Russell Grant",
+          age: 33,
+          status: 0,
+          created: "2018-09-26",
+          image: "https://randomuser.me/api/portraits/thumb/men/55.jpg"
         }
-    } 
-}
+      ]
+    };
+  },
+  methods: {
+    filter_active_inactive() {
+      if (this.status != null) {
+        var status = this.status;
+        return this.users.filter(function(users) {
+          return users.status == status;
+        });
+      } else {
+        return this.users;
+      }
+    },
+    filter_by(users, filter) {
+      return users.sort(function(a, b) {
+        if (a[filter] > b[filter]) return 1;
+        if (a[filter] < b[filter]) return -1;
+        return 0;
+      });
+    }
+  },
+  computed: {
+    filteredUsers() {
+      if (!this.filter) {
+        this.filter = "created_at";
+      }
+      return this.filter_by(this.filter_active_inactive(), this.filter);
+    },
+    userFilters() {
+      let arr = [];
+      for (let prop in this.users[0]) {
+        arr.push(prop);
+      }
+      return arr;
+    }
+  }
+};
