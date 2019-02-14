@@ -5,29 +5,22 @@
         <p>Sort by:</p>
         <div 
             class="radio-btn-filter"
-            v-for="(prop, index) in userFilters"
+            v-for="(prop, index) in userProperties"
             v-if="prop != 'image'"
             :key="index">
             <input 
                 type="radio"
                 :id="prop"
                 :value="prop"
-                v-model="filter">
+                v-model="sortCriteria">
             <label 
                 :for="prop">{{ prop }}</label>
         </div>
     </div>
     <hr>
     <ul>
-        <!-- <li 
-            v-for="user in filteredUsers">
-            Name: {{user.name}}, 
-            Age: {{user.age}} 
-            <span class="active" v-if="user.status == 1">, Active</span> 
-            <span class="inactive" v-else>, Inactive</span>
-        </li>  -->
         <User 
-            v-for="(user, index) in filteredUsers"
+            v-for="(user, index) in sortedUsers"
             :key="index"
             :user="user" />
     </ul>
@@ -51,7 +44,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;
@@ -66,9 +58,6 @@ ul li {
 li {
   display: inline-block;
   margin: 0 10px;
-}
-a {
-  color: #42b983;
 }
 .radio-btns {
   padding-bottom: 1rem;

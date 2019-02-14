@@ -4,14 +4,13 @@
     <ul>
       <li>
         <span><strong>NAME</strong></span>
-        <span><strong>AGE</strong></span>
         <span><strong>CREATED</strong></span>
         </li>
       <li 
-        v-for="user in filteredUsers">
+        v-for="(user, index) in sortedUsers"
+        :key="index">
         <span>{{user.name}}</span>
-        <span>{{user.age}}</span>
-        <span>{{user.created_at}}</span>
+        <span>{{user.created}}</span>
       </li> 
     </ul>
   </div>
@@ -30,7 +29,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 div {
   margin-bottom: 2rem;
@@ -49,7 +47,7 @@ ul li:first-child {
 }
 ul li span {
   display: inline-block;
-  width: 33.3%;
+  width: 50%;
   padding: 0.1rem 0;
 }
 </style>

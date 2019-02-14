@@ -6,7 +6,7 @@
         <h4>{{user.name}}</h4>
         <div :class="{ 'active': user.status == 1, 'inactive': user.status == 0 }"></div>
         <span>Age: {{user.age}}</span>
-        <span>Created: {{ user.created_at }}</span>
+        <span>Created: {{ user.created }}</span>
     </li> 
 </template>
 
@@ -49,11 +49,5 @@ div.active {
 }
 div.inactive {
   background-color: red;
-}
-span.active {
-  color: green;
-}
-span.inactive {
-  color: red;
 }
 </style>

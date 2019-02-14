@@ -1,7 +1,7 @@
 export const filterUsers = {
   data() {
     return {
-      filter: "",
+      sortCriteria: "",
       users: [
         {
           name: "Nurdan Çağıran",
@@ -101,22 +101,22 @@ export const filterUsers = {
         return this.users;
       }
     },
-    filter_by(users, filter) {
+    sort_by(users, sortProp) {
       return users.sort(function(a, b) {
-        if (a[filter] > b[filter]) return 1;
-        if (a[filter] < b[filter]) return -1;
+        if (a[sortProp] > b[sortProp]) return 1;
+        if (a[sortProp] < b[sortProp]) return -1;
         return 0;
       });
     }
   },
   computed: {
-    filteredUsers() {
-      if (!this.filter) {
-        this.filter = "created_at";
+    sortedUsers() {
+      if (!this.sortCriteria) {
+        this.sortCriteria = "created_at";
       }
-      return this.filter_by(this.filter_active_inactive(), this.filter);
+      return this.sort_by(this.filter_active_inactive(), this.sortCriteria);
     },
-    userFilters() {
+    userProperties() {
       let arr = [];
       for (let prop in this.users[0]) {
         arr.push(prop);
