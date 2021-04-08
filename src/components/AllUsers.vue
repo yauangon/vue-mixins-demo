@@ -6,7 +6,6 @@
         <div 
             class="radio-btn-filter"
             v-for="(prop, index) in userProperties"
-            v-if="prop != 'image'"
             :key="index">
             <input 
                 type="radio"
